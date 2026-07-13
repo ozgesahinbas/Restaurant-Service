@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.couchbase.core.mapping.Document;
+import org.springframework.data.couchbase.repository.Collection;
+import org.springframework.data.couchbase.repository.Scope;
+
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -14,6 +17,8 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document
+@Scope("restaurant")
+@Collection("restaurants")
 
 public class Restaurant {
     @Id
