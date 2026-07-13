@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: restaurant-service
+
+  couchbase:
+    connection-string: ${COUCHBASE_CONNECTION_STRING}
+    username: ${COUCHBASE_USERNAME}
+    password: ${COUCHBASE_PASSWORD}
+
+  data:
+    couchbase:
+      bucket-name: restaurant-service
+      scope-name: restaurant
