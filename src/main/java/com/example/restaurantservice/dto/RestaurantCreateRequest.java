@@ -9,6 +9,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Optional;
+import java.util.UUID;
 
 @Data
 public class RestaurantCreateRequest {
@@ -31,6 +32,7 @@ public class RestaurantCreateRequest {
 
     public Restaurant convertEntity() {
         return Restaurant.builder()
+                .id(UUID.randomUUID().toString())
                 .name(name)
                 .description(description)
                 .address(address)
