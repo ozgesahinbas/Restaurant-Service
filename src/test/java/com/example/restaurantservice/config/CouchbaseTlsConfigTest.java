@@ -1,5 +1,6 @@
 package com.example.restaurantservice.config;
 
+import com.couchbase.client.java.env.ClusterEnvironment;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.couchbase.ClusterEnvironmentBuilderCustomizer;
@@ -14,7 +15,6 @@ public class CouchbaseTlsConfigTest {
     void setUp() {
         couchbaseTlsConfig = new CouchbaseTlsConfig();
     }
-
     @Test
     void shouldCreateClusterEnvironmentBuilderCustomizer() {
 
@@ -22,5 +22,10 @@ public class CouchbaseTlsConfigTest {
                 couchbaseTlsConfig.clusterEnvironmentBuilderCustomizer();
 
         assertNotNull(customizer);
+
+        ClusterEnvironment.Builder builder =
+                ClusterEnvironment.builder();
+
+        customizer.customize(builder);
     }
 }

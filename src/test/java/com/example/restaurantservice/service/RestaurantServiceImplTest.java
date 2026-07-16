@@ -138,6 +138,7 @@ public class RestaurantServiceImplTest {
     }
     @Test
     void shouldThrowExceptionWhenUpdatingRestaurantNotFound() {
+
         RestaurantUpdateRequest updateRequest = new RestaurantUpdateRequest();
 
         when(repository.findById("123"))
@@ -174,5 +175,23 @@ public class RestaurantServiceImplTest {
 
         verify(repository).existsById("123");
         verify(repository, never()).deleteById("123");
+    }
+    @Test
+    void shouldThrowExceptionWhenCreateRestaurantFails() {
+
+        RestaurantCreateRequest request =
+                mock(RestaurantCreateRequest.class);
+
+        when(request.convertEntityAsOpt())
+                .thenReturn(Optional.empty());
+
+        RuntimeException exception = assertThrows(
+                RuntimeException.class,
+                () -> restaurantService.createRestaurant(request));
+
+        assertEquals(
+                "Service is faced exception while creating restaurant.", exception.getMessage());
+
+        verify(repository, never()).save(any());
     }
     }

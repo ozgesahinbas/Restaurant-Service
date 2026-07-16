@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.springframework.boot.SpringApplication;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mockStatic;
 
 public class RestaurantServiceApplicationTest {
@@ -20,5 +21,13 @@ public class RestaurantServiceApplicationTest {
                     )
             );
         }
+    }
+    @Test
+    void shouldCreateApplicationInstance() {
+
+        RestaurantServiceApplication application =
+                new RestaurantServiceApplication();
+
+        assertNotNull(application);
     }
 }
